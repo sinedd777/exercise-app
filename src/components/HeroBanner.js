@@ -24,7 +24,7 @@ const HeroBanner = () => {
         </Typography>
         <Typography
             fontSize="22px"
-            LineHeight="35px"
+            lineHeight="35px"
             mb={4}
             >
             Check out most effective exercises
