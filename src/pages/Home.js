@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Box } from '@mui/system'
+import { Box } from '@mui/material'
 import HeroBanner from '../components/HeroBanner'
 import SearchExercises from '../components/SearchExercises'
 import Exercises from '../components/Exercises'
@@ -12,7 +12,15 @@ const Home = () => {
   console.log(bodyPart);
 
   return (
-    <Box>
+    <Box 
+    sx={{
+        backgroundColor: 'text.disabled',
+        '&:hover': {
+        backgroundColor: 'warning.main',
+        opacity: [0.9, 0.8, 0.7],
+      }}
+    }
+    >
       <HeroBanner/>
       <SearchExercises 
         setExercises={setExercises}
