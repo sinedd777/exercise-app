@@ -12,15 +12,7 @@ const Home = () => {
   console.log(bodyPart);
 
   return (
-    <Box 
-    sx={{
-        backgroundColor: 'text.disabled',
-        '&:hover': {
-        backgroundColor: 'warning.main',
-        opacity: [0.9, 0.8, 0.7],
-      }}
-    }
-    >
+    <Box>
       <HeroBanner/>
       <SearchExercises 
         setExercises={setExercises}
