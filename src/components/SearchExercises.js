@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
-import { exerciseOptions, fetchData } from '../util/fetchData'
+import { exerciseOptions, fetchData, fallbackBodyParts } from '../util/fetchData'
 import HorizontalScrollbar from './HorizontalScrollbar';
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     
     const [search,setSearch] = useState('');
-    const [bodyParts, setBodyParts] = useState([])
+    const [bodyParts, setBodyParts] = useState(fallbackBodyParts);
 
     useEffect(() => {
       const fetchExercisesData = async () => {
-        const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList',exerciseOptions);
-        
-        setBodyParts(['all', ...bodyPartsData]);
+        try {
+          const bodyPartsData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+          setBodyParts(['all', ...bodyPartsData]);
+        } catch (error) {
+          console.log('Error fetching body parts:', error);
+          // Already initialized with fallback data, so no need to do anything here
+        }
       }
 
       fetchExercisesData();
